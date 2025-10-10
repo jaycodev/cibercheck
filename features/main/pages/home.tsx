@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { LayoutGrid, List, Search } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
+import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import {
   Select,
   SelectContent,
@@ -84,7 +84,7 @@ export default function HomePage() {
         </div>
 
         <div className="flex flex-wrap gap-4 items-start lg:flex-nowrap lg:items-center lg:justify-between">
-          <div className="flex flex-nowrap gap-3 items-center w-full lg:w-auto">
+          <div className="flex flex-wrap gap-3 items-center w-full lg:w-auto">
             <div className="flex gap-1 rounded-lg border bg-card p-1">
               <Button
                 variant={viewMode === 'list' ? 'secondary' : 'ghost'}
@@ -104,21 +104,21 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="relative flex-1 min-w-0 sm:flex-none sm:w-auto">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Busque sus cursos"
-                className="pl-10 w-auto"
+            <InputGroup className="min-w-70 w-auto">
+              <InputGroupInput
+                placeholder="Busque sus cursos..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-            </div>
+              <InputGroupAddon>
+                <Search />
+              </InputGroupAddon>
+            </InputGroup>
           </div>
 
           <div className="flex flex-wrap gap-3 w-full lg:w-auto">
             <Select value={periodFilter} onValueChange={setPeriodFilter}>
-              <SelectTrigger className="w-auto min-w-[120px]">
+              <SelectTrigger>
                 <SelectValue placeholder="Períodos" />
               </SelectTrigger>
               <SelectContent>
@@ -129,7 +129,7 @@ export default function HomePage() {
             </Select>
 
             <Select value={courseFilter} onValueChange={setCourseFilter}>
-              <SelectTrigger className="w-auto min-w-[120px]">
+              <SelectTrigger>
                 <SelectValue placeholder="Filtros" />
               </SelectTrigger>
               <SelectContent>
@@ -140,7 +140,7 @@ export default function HomePage() {
             </Select>
 
             <Select value={itemsPerPage} onValueChange={setItemsPerPage}>
-              <SelectTrigger className="w-auto min-w-[120px]">
+              <SelectTrigger>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
