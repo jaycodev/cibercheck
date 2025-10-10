@@ -16,12 +16,12 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
       height={height}
       className={className}
     >
-      <rect width="512" height="512" rx="128" className="fill-primary dark:fill-white" />
+      <rect width="512" height="512" rx="128" className="fill-primary" />
       <g transform="translate(256, 256) scale(12.917)">
         <g transform="translate(-12, -12)">
           <path
             d="M8 2v4"
-            className="stroke-white dark:stroke-primary"
+            className="stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -29,7 +29,7 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
           />
           <path
             d="M16 2v4"
-            className="stroke-white dark:stroke-primary"
+            className="stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -41,7 +41,7 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
             x="3"
             y="4"
             rx="2"
-            className="stroke-white dark:stroke-primary"
+            className="stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -49,7 +49,7 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
           />
           <path
             d="M3 10h18"
-            className="stroke-white dark:stroke-primary"
+            className="stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -57,7 +57,7 @@ export const Logo: React.FC<LogoProps> = ({ width = 512, height = 512, className
           />
           <path
             d="m9 16 2 2 4-4"
-            className="stroke-white dark:stroke-primary"
+            className="stroke-white"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"

@@ -20,10 +20,7 @@ export const metadata: Metadata = {
   description:
     'CiberCheck es una plataforma de gestión de asistencia para eventos y clases, diseñada para facilitar el control de presencia de estudiantes y profesores mediante check-ins rápidos y reportes en tiempo real.',
   icons: {
-    icon: [
-      { url: '/favicon-light.svg', media: '(prefers-color-scheme: light)', type: 'image/svg+xml' },
-      { url: '/favicon-dark.svg', media: '(prefers-color-scheme: dark)', type: 'image/svg+xml' },
-    ],
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
   },
 }
 
