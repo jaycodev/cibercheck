@@ -4,7 +4,6 @@ import { useState } from 'react'
 
 import { LayoutGrid, List, Search } from 'lucide-react'
 
-import { Button } from '@/components/ui/button'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import {
   Select,
