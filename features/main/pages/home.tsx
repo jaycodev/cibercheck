@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { CourseCard } from '@/features/main/components/course-card'
 import { CourseListItem } from '@/features/main/components/course-list-item'
@@ -85,24 +86,20 @@ export default function HomePage() {
 
         <div className="flex flex-wrap gap-4 items-start lg:flex-nowrap lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-3 items-center w-full lg:w-auto">
-            <div className="flex gap-1 rounded-lg border bg-card p-1">
-              <Button
-                variant={viewMode === 'list' ? 'secondary' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-                className="gap-2"
-              >
-                <List className="h-4 w-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'grid' ? 'secondary' : 'ghost'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
-                className="gap-2"
-              >
-                <LayoutGrid className="h-4 w-4" />
-              </Button>
-            </div>
+            <Tabs
+              value={viewMode}
+              onValueChange={(val) => setViewMode(val as 'grid' | 'list')}
+              defaultValue="grid"
+            >
+              <TabsList>
+                <TabsTrigger value="grid">
+                  <LayoutGrid />
+                </TabsTrigger>
+                <TabsTrigger value="list">
+                  <List />
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
 
             <InputGroup className="min-w-70 w-auto">
               <InputGroupInput
