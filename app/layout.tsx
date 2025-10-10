@@ -13,8 +13,12 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Next.js + shadcn/ui Starter',
-  description: 'Starter template with Next.js 15, Tailwind CSS v4, and shadcn/ui.',
+  title: {
+    default: 'CiberCheck',
+    template: '%s - CiberCheck',
+  },
+  description:
+    'CiberCheck es una plataforma de gestión de asistencia para eventos y clases, diseñada para facilitar el control de presencia de estudiantes y profesores mediante check-ins rápidos y reportes en tiempo real.',
   icons: {
     icon: [
       { url: '/favicon-light.svg', media: '(prefers-color-scheme: light)', type: 'image/svg+xml' },
