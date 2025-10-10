@@ -83,8 +83,8 @@ export default function HomePage() {
           <p className="text-muted-foreground mt-2">Selecciona un curso para marcar asistencia</p>
         </div>
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-wrap gap-4 items-start lg:flex-nowrap lg:items-center lg:justify-between">
+          <div className="flex flex-nowrap gap-3 items-center w-full lg:w-auto">
             <div className="flex gap-1 rounded-lg border bg-card p-1">
               <Button
                 variant={viewMode === 'list' ? 'secondary' : 'ghost'}
@@ -104,21 +104,21 @@ export default function HomePage() {
               </Button>
             </div>
 
-            <div className="relative w-full sm:w-80">
+            <div className="relative flex-1 min-w-0 sm:flex-none sm:w-auto">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Busque sus cursos"
-                className="pl-10"
+                className="pl-10 w-auto"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="flex flex-wrap gap-3 w-full lg:w-auto">
             <Select value={periodFilter} onValueChange={setPeriodFilter}>
-              <SelectTrigger className="w-full sm:w-[180px]">
+              <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue placeholder="Períodos" />
               </SelectTrigger>
               <SelectContent>
@@ -129,7 +129,7 @@ export default function HomePage() {
             </Select>
 
             <Select value={courseFilter} onValueChange={setCourseFilter}>
-              <SelectTrigger className="w-full sm:w-[180px]">
+              <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue placeholder="Filtros" />
               </SelectTrigger>
               <SelectContent>
@@ -140,7 +140,7 @@ export default function HomePage() {
             </Select>
 
             <Select value={itemsPerPage} onValueChange={setItemsPerPage}>
-              <SelectTrigger className="w-full sm:w-[120px]">
+              <SelectTrigger className="w-auto min-w-[120px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
