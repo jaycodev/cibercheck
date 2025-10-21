@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { Home, LogOut, User } from 'lucide-react'
+import { Home, LogOut, Settings, User } from 'lucide-react'
 import Link from 'next/link'
 
 import { ConfirmDialog } from '@/components/shared/confirm-dialog'
@@ -12,7 +12,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
@@ -53,11 +52,9 @@ export function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>
-              <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <User />
-                Profesor Demo
+                <Settings className="text-current" />
+                Ajustes
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem variant="destructive" onClick={handleLogoutClick}>
