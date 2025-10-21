@@ -67,7 +67,7 @@ export default function HomePage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [periodFilter, setPeriodFilter] = useState('all')
   const [courseFilter, setCourseFilter] = useState('all')
-  const [itemsPerPage, setItemsPerPage] = useState('25')
+  const [itemsPerPage, setItemsPerPage] = useState('10')
 
   const filteredCourses = coursesData.filter(
     (course) =>
