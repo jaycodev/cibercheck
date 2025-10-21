@@ -79,7 +79,7 @@ export default function HomePage() {
     <>
       <div className="mb-8 space-y-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-balance">Mis cursos</h1>
+          <h1 className="text-3xl font-semibold tracking-tight text-balance">Mis cursos</h1>
           <p className="text-muted-foreground mt-2">Selecciona un curso para marcar asistencia</p>
         </div>
 

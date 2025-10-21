@@ -32,7 +32,7 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <Logo className="size-9" />
-          <span className="text-xl font-medium">CiberCheck</span>
+          <span className="text-xl font-semibold">CiberCheck</span>
         </Link>
 
         <nav className="flex items-center gap-2">
