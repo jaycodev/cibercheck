@@ -36,7 +36,7 @@ export function CourseListItem({ id, code, name, status, color }: CourseListItem
           className="shrink-0"
           onClick={(e) => e.preventDefault()}
         >
-          <Star className="h-5 w-5 text-muted-foreground hover:text-primary" />
+          <Star className="size-5 text-muted-foreground hover:text-primary" />
         </Button>
       </div>
     </Link>
