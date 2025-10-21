@@ -19,6 +19,9 @@
       }
     ],
     "paths": {
+      "@auth/*": ["./features/auth/*"],
+      "@main/*": ["./features/main/*"],
+      "@error/*": ["./features/error/*"],
       "@/*": ["./*"]
     }
   },

@@ -4,6 +4,9 @@ import { useState } from 'react'
 
 import { LayoutGrid, List, Search } from 'lucide-react'
 
+import { CourseCard } from '@main/components/course-card'
+import { CourseListItem } from '@main/components/course-list-item'
+
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import {
   Select,
@@ -13,63 +16,27 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { getCourseColor } from '@/lib/colors'
+import coursesData from '@/mock/courses.json'
 
-import { CourseCard } from '@/features/main/components/course-card'
-import { CourseListItem } from '@/features/main/components/course-list-item'
+const groupedCourses = coursesData.map((course) => ({
+  id: `${course.courseId}-${course.sectionId}`,
+  courseId: course.courseId,
+  sectionId: course.sectionId,
+  code: course.code,
+  name: `${course.name} - ${course.section}`,
+  status: 'Abierto' as const,
+  color: getCourseColor(course.courseId),
+}))
 
-const coursesData = [
-  {
-    id: '1',
-    code: 'CIBERTEC.5113.202596.C201.WT',
-    name: 'INGLÉS II (WT)',
-    status: 'Abierto' as const,
-    color: '#dc2626',
-  },
-  {
-    id: '2',
-    code: 'CIBERTEC.2412.202509P.1127',
-    name: 'INNOVACIÓN Y EMPRENDIMIENTO',
-    status: 'Abierto' as const,
-    color: '#2563eb',
-  },
-  {
-    id: '3',
-    code: 'CIBERTEC.4693.202509P.1875',
-    name: 'DESARROLLO DE APLICACIONES MÓVILES I',
-    status: 'Abierto' as const,
-    color: '#0891b2',
-  },
-  {
-    id: '4',
-    code: 'CIBERTEC.3301.202596.C105.WT',
-    name: 'PROGRAMACIÓN WEB',
-    status: 'Abierto' as const,
-    color: '#7c3aed',
-  },
-  {
-    id: '5',
-    code: 'CIBERTEC.2201.202509P.2341',
-    name: 'BASE DE DATOS',
-    status: 'Cerrado' as const,
-    color: '#059669',
-  },
-  {
-    id: '6',
-    code: 'CIBERTEC.1105.202596.C202.WT',
-    name: 'MATEMÁTICA PARA LA COMPUTACIÓN',
-    status: 'Abierto' as const,
-    color: '#ea580c',
-  },
-]
-
-export default function HomePage() {
+export function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [periodFilter, setPeriodFilter] = useState('all')
   const [courseFilter, setCourseFilter] = useState('all')
   const [itemsPerPage, setItemsPerPage] = useState('10')
 
-  const filteredCourses = coursesData.filter(
+  const filteredCourses = groupedCourses.filter(
     (course) =>
       course.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.code.toLowerCase().includes(searchQuery.toLowerCase())

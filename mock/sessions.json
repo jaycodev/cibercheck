@@ -1,0 +1,47 @@
+[
+  {
+    "sessionId": 1,
+    "courseId": 1,
+    "sectionId": 1,
+    "date": "2025-10-14",
+    "startTime": "08:00:00",
+    "endTime": "10:00:00",
+    "topic": "Introducción a Android Studio"
+  },
+  {
+    "sessionId": 2,
+    "courseId": 1,
+    "sectionId": 1,
+    "date": "2025-10-21",
+    "startTime": "08:00:00",
+    "endTime": "10:00:00",
+    "topic": "Componentes de UI en Android"
+  },
+  {
+    "sessionId": 3,
+    "courseId": 1,
+    "sectionId": 1,
+    "date": "2025-10-28",
+    "startTime": "08:00:00",
+    "endTime": "10:00:00",
+    "topic": "Actividades e Intents"
+  },
+  {
+    "sessionId": 4,
+    "courseId": 1,
+    "sectionId": 2,
+    "date": "2025-10-15",
+    "startTime": "10:00:00",
+    "endTime": "12:00:00",
+    "topic": "Layouts y ViewGroups"
+  },
+  {
+    "sessionId": 5,
+    "courseId": 1,
+    "sectionId": 2,
+    "date": "2025-10-22",
+    "startTime": "10:00:00",
+    "endTime": "12:00:00",
+    "topic": "RecyclerView y Adaptadores"
+  }
+]

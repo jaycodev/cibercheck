@@ -8,6 +8,8 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 
 interface CourseCardProps {
   id: string
+  courseId: number
+  sectionId: number
   code: string
   name: string
   status: 'Abierto' | 'Cerrado'
@@ -17,7 +19,7 @@ interface CourseCardProps {
 export function CourseCard({ id, code, name, status, color }: CourseCardProps) {
   return (
     <Link href={`/curso/${id}`}>
-      <Card className="group overflow-hidden transform transition-transform duration-200 ease-out hover:shadow-lg hover:-translate-y-1">
+      <Card className="group overflow-hidden transform transition-transform duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1">
         <CardHeader className="p-6 text-white" style={{ backgroundColor: color }}>
           <div className="flex items-center gap-3">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
@@ -36,7 +38,7 @@ export function CourseCard({ id, code, name, status, color }: CourseCardProps) {
             <Badge variant={status === 'Abierto' ? 'default' : 'secondary'} className="font-medium">
               {status}
             </Badge>
-            <span className="text-sm text-muted-foreground flex flex-row items-center gap-1">
+            <span className="text-sm group-hover:underline flex flex-row items-center gap-1">
               Ver detalles
               <CircleArrowRight className="size-4" />
             </span>

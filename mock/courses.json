@@ -1,0 +1,86 @@
+[
+  {
+    "courseId": 1,
+    "name": "Desarrollo de Aplicaciones Móviles I",
+    "code": "DAM-I",
+    "sectionId": 1,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 1,
+    "name": "Desarrollo de Aplicaciones Móviles I",
+    "code": "DAM-I",
+    "sectionId": 2,
+    "section": "Sección B"
+  },
+  {
+    "courseId": 2,
+    "name": "Innovación y Emprendimiento",
+    "code": "INE",
+    "sectionId": 3,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 3,
+    "name": "Inglés II",
+    "code": "ING-II",
+    "sectionId": 4,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 3,
+    "name": "Inglés II",
+    "code": "ING-II",
+    "sectionId": 5,
+    "section": "Sección B"
+  },
+  {
+    "courseId": 4,
+    "name": "Lenguaje de Programación II",
+    "code": "LP-II",
+    "sectionId": 6,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 5,
+    "name": "Programación Web",
+    "code": "PW",
+    "sectionId": 7,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 5,
+    "name": "Programación Web",
+    "code": "PW",
+    "sectionId": 8,
+    "section": "Sección B"
+  },
+  {
+    "courseId": 6,
+    "name": "Base de Datos I",
+    "code": "BD-I",
+    "sectionId": 9,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 7,
+    "name": "Base de Datos Avanzado I",
+    "code": "BDA-I",
+    "sectionId": 10,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 8,
+    "name": "Matemática para la Computación",
+    "code": "MC",
+    "sectionId": 11,
+    "section": "Sección A"
+  },
+  {
+    "courseId": 9,
+    "name": "Arquitectura de Software",
+    "code": "AS",
+    "sectionId": 12,
+    "section": "Sección A"
+  }
+]

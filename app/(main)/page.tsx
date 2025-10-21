@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import HomePage from '@/features/main/pages/home'
+import { HomePage } from '@main/pages/home'
 
 export const metadata: Metadata = {
   title: 'Inicio',
