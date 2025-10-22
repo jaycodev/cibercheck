@@ -62,7 +62,7 @@ export default function RootLayout({
           disableTransitionOnChange
           enableColorScheme
         >
-          <NextTopLoader color="var(--ring)" height={2} easing="linear" showSpinner={false} />
+          <NextTopLoader color="var(--primary)" height={3} easing="linear" showSpinner={false} />
           {children}
         </ThemeProvider>
       </body>
