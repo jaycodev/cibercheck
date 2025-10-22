@@ -29,10 +29,10 @@ export function Header() {
   }
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:px-6">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-semibold">
-          <Logo className="size-9" />
-          <span className="text-xl font-semibold">CiberCheck</span>
+          <Logo className="size-7" />
+          CiberCheck
         </Link>
 
         <nav className="flex items-center gap-2">
