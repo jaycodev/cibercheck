@@ -16,17 +16,15 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { getCourseColor } from '@/lib/colors'
 import coursesData from '@/mock/courses.json'
 
 const groupedCourses = coursesData.map((course) => ({
-  id: `${course.courseId}-${course.sectionId}`,
-  courseId: course.courseId,
-  sectionId: course.sectionId,
+  id: course.courseSlug,
+  courseSlug: course.courseSlug,
   code: course.code,
   name: course.name,
-  section: course.section,
-  color: getCourseColor(course.courseId),
+  totalSections: course.totalSections,
+  color: course.color,
 }))
 
 export function HomePage() {

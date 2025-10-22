@@ -4,8 +4,9 @@ import { AlertCircle, Calendar, CheckCircle2, Clock, XCircle } from 'lucide-reac
 import Link from 'next/link'
 
 interface SessionListItemProps {
-  id: string
-  courseId: string
+  sessionNumber: string
+  courseSlug: string
+  sectionSlug: string
   number: number
   date: string
   startTime: string
@@ -25,8 +26,9 @@ function formatTime(time: string): string {
 }
 
 export function SessionListItem({
-  id,
-  courseId,
+  sessionNumber,
+  courseSlug,
+  sectionSlug,
   number,
   date,
   startTime,
@@ -37,11 +39,10 @@ export function SessionListItem({
   late,
 }: SessionListItemProps) {
   return (
-    <Link href={`/curso/${courseId}/sesion/${id}`}>
+    <Link href={`/curso/${courseSlug}/${sectionSlug}/sesion/${sessionNumber}`}>
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 rounded-lg border bg-card p-4 mb-3 transition-all hover:shadow-md cursor-pointer">
-        {/* Session info */}
         <div className="flex-1 space-y-2">
-          <p className="text-sm font-semibold text-primary">Sesión {number}</p>
+          <p className="text-sm font-semibold">Sesión {number}</p>
           <h3 className="font-semibold text-lg leading-tight text-balance">{topic}</h3>
           <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-1">

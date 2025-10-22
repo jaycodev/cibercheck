@@ -17,19 +17,29 @@ import {
 interface QRModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
-  courseId: string
-  sessionId: string
+  courseSlug: string
+  sectionSlug: string
+  sessionNumber: string
   courseName: string
 }
 
-export function QRModal({ open, onOpenChange, courseId, sessionId, courseName }: QRModalProps) {
+export function QRModal({
+  open,
+  onOpenChange,
+  courseSlug,
+  sectionSlug,
+  sessionNumber,
+  courseName,
+}: QRModalProps) {
   const [qrValue, setQrValue] = useState('')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setQrValue(`${window.location.origin}/asistencia/${courseId}/${sessionId}`)
+      setQrValue(
+        `${window.location.origin}/asistencia/${courseSlug}/${sectionSlug}/${sessionNumber}`
+      )
     }
-  }, [courseId, sessionId])
+  }, [courseSlug, sectionSlug, sessionNumber])
 
   const downloadQR = () => {
     const svg = document.querySelector('#qr-code-svg')
@@ -46,7 +56,7 @@ export function QRModal({ open, onOpenChange, courseId, sessionId, courseName }:
         ctx?.drawImage(img, 0, 0)
         const link = document.createElement('a')
         link.href = canvas.toDataURL('image/png')
-        link.download = `qr-asistencia-${sessionId}.png`
+        link.download = `qr-asistencia-sesion-${sessionNumber}.png`
         link.click()
       }
 

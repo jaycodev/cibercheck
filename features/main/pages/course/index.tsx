@@ -10,17 +10,17 @@ import { SessionListItem } from '@main/components/session-list-item'
 
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { getCourseColor } from '@/lib/colors'
+import courseSectionDetail from '@/mock/attendance.json'
 import coursesData from '@/mock/courses.json'
 import sessionsData from '@/mock/sessions.json'
 
-export function CoursePage({ params }: { params: { courseId: string } }) {
-  const [courseIdStr, sectionIdStr] = params.courseId.split('-')
-  const courseId = parseInt(courseIdStr)
-  const sectionId = parseInt(sectionIdStr)
+export function CoursePage({ params }: { params: { courseSlug: string; sectionSlug: string } }) {
+  const { courseSlug, sectionSlug } = params
 
-  const course = coursesData.find((c) => c.courseId === courseId && c.sectionId === sectionId)
-  const sessions = sessionsData.filter((s) => s.courseId === courseId && s.sectionId === sectionId)
+  const course = courseSectionDetail
+  const sessions = sessionsData.filter(
+    (s) => s.courseSlug === courseSlug && s.sectionSlug === sectionSlug
+  )
 
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
@@ -28,14 +28,15 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
     return <p>Curso no encontrado</p>
   }
 
-  const courseColor = getCourseColor(course.courseId)
+  const courseData = coursesData.find((c) => c.courseSlug === courseSlug)
+  const courseColor = courseData?.color || '#3b82f6'
 
   return (
     <>
-      <Link href="/">
+      <Link href={`/curso/${courseSlug}`}>
         <Button variant="ghost" className="mb-6">
           <ArrowLeft className="size-4" />
-          Volver a cursos
+          Volver a secciones
         </Button>
       </Link>
 
@@ -43,9 +44,9 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
         <div className="flex items-start gap-4">
           <div className="h-16 w-1 rounded-full" style={{ backgroundColor: courseColor }} />
           <div className="flex-1">
-            <h1 className="text-3xl font-bold tracking-tight text-balance">{course.name}</h1>
-            <p className="text-sm text-muted-foreground mt-2">Sección {course.section}</p>
-            <p className="text-sm font-mono text-muted-foreground mt-1">{course.code}</p>
+            <h1 className="text-3xl font-bold tracking-tight text-balance">{course.courseName}</h1>
+            <p className="text-sm text-muted-foreground mt-2">{course.sectionName}</p>
+            <p className="text-sm font-mono text-muted-foreground mt-1">{course.courseCode}</p>
           </div>
         </div>
       </div>
@@ -74,9 +75,10 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {sessions.map((session) => (
               <SessionCard
-                key={session.sessionId}
-                id={session.sessionId.toString()}
-                courseId={params.courseId}
+                key={session.sessionNumber}
+                sessionNumber={session.sessionNumber.toString()}
+                courseSlug={courseSlug}
+                sectionSlug={sectionSlug}
                 number={session.sessionNumber}
                 date={session.date}
                 startTime={session.startTime}
@@ -92,9 +94,10 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
           <div className="space-y-3">
             {sessions.map((session) => (
               <SessionListItem
-                key={session.sessionId}
-                id={session.sessionId.toString()}
-                courseId={params.courseId}
+                key={session.sessionNumber}
+                sessionNumber={session.sessionNumber.toString()}
+                courseSlug={courseSlug}
+                sectionSlug={sectionSlug}
                 number={session.sessionNumber}
                 date={session.date}
                 startTime={session.startTime}

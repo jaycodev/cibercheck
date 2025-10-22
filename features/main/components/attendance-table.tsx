@@ -32,16 +32,18 @@ interface Student {
 }
 
 interface AttendanceTableProps {
-  courseId: string
-  sessionId: string
+  courseSlug: string
+  sectionSlug: string
+  sessionNumber: string
   courseName: string
   sessionDate: string
   students: Student[]
 }
 
 export function AttendanceTable({
-  courseId,
-  sessionId,
+  courseSlug,
+  sectionSlug,
+  sessionNumber,
   courseName,
   sessionDate,
   students: initialStudents,
@@ -124,7 +126,9 @@ export function AttendanceTable({
                 <TableCell className="text-right">
                   <Select
                     value={student.attendance}
-                    onValueChange={(value: any) => updateAttendance(student.id, value)}
+                    onValueChange={(value) =>
+                      updateAttendance(student.id, value as 'asistio' | 'falto' | 'tardanza')
+                    }
                   >
                     <SelectTrigger className="w-[140px]">
                       <SelectValue />
@@ -145,8 +149,9 @@ export function AttendanceTable({
       <QRModal
         open={qrModalOpen}
         onOpenChange={setQrModalOpen}
-        courseId={courseId}
-        sessionId={sessionId}
+        courseSlug={courseSlug}
+        sectionSlug={sectionSlug}
+        sessionNumber={sessionNumber}
         courseName={courseName}
       />
     </div>

@@ -6,8 +6,9 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
 
 interface SessionCardProps {
-  id: string
-  courseId: string
+  sessionNumber: string
+  courseSlug: string
+  sectionSlug: string
   number: number
   date: string
   startTime: string
@@ -27,8 +28,9 @@ function formatTime(time: string): string {
 }
 
 export function SessionCard({
-  id,
-  courseId,
+  sessionNumber,
+  courseSlug,
+  sectionSlug,
   number,
   date,
   startTime,
@@ -39,7 +41,7 @@ export function SessionCard({
   late,
 }: SessionCardProps) {
   return (
-    <Link href={`/curso/${courseId}/sesion/${id}`}>
+    <Link href={`/curso/${courseSlug}/${sectionSlug}/sesion/${sessionNumber}`}>
       <Card className="overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] h-full cursor-pointer">
         <CardHeader className="pb-3">
           <div className="space-y-2">

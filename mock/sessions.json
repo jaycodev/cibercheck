@@ -1,8 +1,7 @@
 [
   {
-    "sessionId": 1,
-    "courseId": 1,
-    "sectionId": 1,
+    "courseSlug": "desarrollo-de-aplicaciones-moviles-i",
+    "sectionSlug": "seccion-a",
     "sessionNumber": 1,
     "date": "2025-10-14",
     "startTime": "08:00:00",
@@ -16,9 +15,8 @@
     }
   },
   {
-    "sessionId": 2,
-    "courseId": 1,
-    "sectionId": 1,
+    "courseSlug": "desarrollo-de-aplicaciones-moviles-i",
+    "sectionSlug": "seccion-a",
     "sessionNumber": 2,
     "date": "2025-10-21",
     "startTime": "08:00:00",
@@ -32,30 +30,13 @@
     }
   },
   {
-    "sessionId": 3,
-    "courseId": 1,
-    "sectionId": 1,
+    "courseSlug": "desarrollo-de-aplicaciones-moviles-i",
+    "sectionSlug": "seccion-a",
     "sessionNumber": 3,
     "date": "2025-10-28",
     "startTime": "08:00:00",
     "endTime": "10:00:00",
     "topic": "Actividades e Intents",
-    "attendanceStats": {
-      "presente": 0,
-      "ausente": 0,
-      "tarde": 0,
-      "justificado": 0
-    }
-  },
-  {
-    "sessionId": 4,
-    "courseId": 1,
-    "sectionId": 2,
-    "sessionNumber": 4,
-    "date": "2025-10-15",
-    "startTime": "10:00:00",
-    "endTime": "12:00:00",
-    "topic": "Layouts y ViewGroups",
     "attendanceStats": {
       "presente": 4,
       "ausente": 1,
@@ -64,10 +45,24 @@
     }
   },
   {
-    "sessionId": 5,
-    "courseId": 1,
-    "sectionId": 2,
-    "sessionNumber": 5,
+    "courseSlug": "desarrollo-de-aplicaciones-moviles-i",
+    "sectionSlug": "seccion-b",
+    "sessionNumber": 1,
+    "date": "2025-10-15",
+    "startTime": "10:00:00",
+    "endTime": "12:00:00",
+    "topic": "Layouts y ViewGroups",
+    "attendanceStats": {
+      "presente": 4,
+      "ausente": 1,
+      "tarde": 1,
+      "justificado": 0
+    }
+  },
+  {
+    "courseSlug": "desarrollo-de-aplicaciones-moviles-i",
+    "sectionSlug": "seccion-b",
+    "sessionNumber": 2,
     "date": "2025-10-22",
     "startTime": "10:00:00",
     "endTime": "12:00:00",

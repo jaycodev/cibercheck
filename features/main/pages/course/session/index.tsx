@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { AttendanceTable } from '@main/components/attendance-table'
 
 import { Button } from '@/components/ui/button'
-import coursesData from '@/mock/courses.json'
+import courseSectionDetail from '@/mock/attendance.json'
 import sessionsData from '@/mock/sessions.json'
 
 const generateStudents = (count: number, seed: string) => {
@@ -68,29 +68,31 @@ const generateStudents = (count: number, seed: string) => {
 export default function SessionPage({
   params,
 }: {
-  params: { courseId: string; sessionId: string }
+  params: { courseSlug: string; sectionSlug: string; sessionNumber: string }
 }) {
-  const [courseIdStr, sectionIdStr] = params.courseId.split('-')
-  const courseId = parseInt(courseIdStr)
-  const sectionId = parseInt(sectionIdStr)
-  const sessionId = parseInt(params.sessionId)
+  const { courseSlug, sectionSlug, sessionNumber } = params
+  const parsedSessionNumber = parseInt(sessionNumber)
 
-  const course = coursesData.find((c) => c.courseId === courseId && c.sectionId === sectionId)
+  // En producción, esto vendría de la API
+  const course = courseSectionDetail
 
   const session = sessionsData.find(
-    (s) => s.sessionId === sessionId && s.courseId === courseId && s.sectionId === sectionId
+    (s) =>
+      s.courseSlug === courseSlug &&
+      s.sectionSlug === sectionSlug &&
+      s.sessionNumber === parsedSessionNumber
   )
 
   if (!course || !session) {
     return <p>Sesión no encontrada</p>
   }
 
-  const students = generateStudents(25, `${params.courseId}-${params.sessionId}`)
-  const fullCourseName = `${course.name} - ${course.section}`
+  const students = generateStudents(25, `${courseSlug}-${sectionSlug}-${sessionNumber}`)
+  const fullCourseName = `${course.courseName} - ${course.sectionName}`
 
   return (
     <>
-      <Link href={`/curso/${params.courseId}`}>
+      <Link href={`/curso/${courseSlug}/${sectionSlug}`}>
         <Button variant="ghost" className="mb-6">
           <ArrowLeft className="size-4" />
           Volver a sesiones
@@ -98,8 +100,9 @@ export default function SessionPage({
       </Link>
 
       <AttendanceTable
-        courseId={params.courseId}
-        sessionId={params.sessionId}
+        courseSlug={courseSlug}
+        sectionSlug={sectionSlug}
+        sessionNumber={sessionNumber}
         courseName={fullCourseName}
         sessionDate={new Date(session.date).toLocaleDateString('es-ES', {
           year: 'numeric',
