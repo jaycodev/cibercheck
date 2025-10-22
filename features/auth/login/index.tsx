@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { Logo } from '@/components/shared/logo'
 
 import { LoginForm } from './form'
@@ -18,11 +20,13 @@ export function LoginPage() {
           </div>
         </div>
       </div>
-      <div className="bg-muted relative hidden lg:block">
-        <img
-          src="/placeholder.svg"
-          alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+      <div className="hidden lg:flex lg:items-center lg:justify-center">
+        <Image
+          src="/login.webp"
+          alt="Asistencia con QR"
+          width={600}
+          height={500}
+          className="rounded-lg"
         />
       </div>
     </div>
