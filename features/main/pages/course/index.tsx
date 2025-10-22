@@ -1,10 +1,15 @@
 'use client'
 
-import { ArrowLeft, Calendar, CircleArrowRight, Clock } from 'lucide-react'
+import { useState } from 'react'
+
+import { ArrowLeft, LayoutGrid, List } from 'lucide-react'
 import Link from 'next/link'
 
+import { SessionCard } from '@main/components/session-card'
+import { SessionListItem } from '@main/components/session-list-item'
+
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { getCourseColor } from '@/lib/colors'
 import coursesData from '@/mock/courses.json'
 import sessionsData from '@/mock/sessions.json'
@@ -15,8 +20,9 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
   const sectionId = parseInt(sectionIdStr)
 
   const course = coursesData.find((c) => c.courseId === courseId && c.sectionId === sectionId)
-
   const sessions = sessionsData.filter((s) => s.courseId === courseId && s.sectionId === sectionId)
+
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
   if (!course) {
     return <p>Curso no encontrado</p>
@@ -37,57 +43,75 @@ export function CoursePage({ params }: { params: { courseId: string } }) {
         <div className="flex items-start gap-4">
           <div className="h-16 w-1 rounded-full" style={{ backgroundColor: courseColor }} />
           <div className="flex-1">
-            <h1 className="text-3xl font-bold tracking-tight text-balance">
-              {course.name} - {course.section}
-            </h1>
-            <p className="text-sm font-mono text-muted-foreground mt-2">{course.code}</p>
+            <h1 className="text-3xl font-bold tracking-tight text-balance">{course.name}</h1>
+            <p className="text-sm text-muted-foreground mt-2">Sección {course.section}</p>
+            <p className="text-sm font-mono text-muted-foreground mt-1">{course.code}</p>
           </div>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <h2 className="text-xl font-semibold">Sesiones de clase</h2>
-        {sessions.length > 0 ? (
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center mb-6">
+        <h2 className="text-xl font-semibold">Sesiones de Clase</h2>
+        <Tabs
+          value={viewMode}
+          onValueChange={(val) => setViewMode(val as 'grid' | 'list')}
+          defaultValue="grid"
+          className="ml-auto"
+        >
+          <TabsList>
+            <TabsTrigger value="grid">
+              <LayoutGrid />
+            </TabsTrigger>
+            <TabsTrigger value="list">
+              <List />
+            </TabsTrigger>
+          </TabsList>
+        </Tabs>
+      </div>
+
+      {sessions.length > 0 ? (
+        viewMode === 'grid' ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {sessions.map((session) => (
-              <Link
+              <SessionCard
                 key={session.sessionId}
-                href={`/curso/${params.courseId}/sesion/${session.sessionId}`}
-              >
-                <Card className="group overflow-hidden transform transition-transform duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1 h-full">
-                  <CardHeader className="pb-3">
-                    <h3 className="font-semibold text-lg leading-tight text-balance">
-                      {session.topic}
-                    </h3>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Calendar className="size-4" />
-                      {new Date(session.date).toLocaleDateString('es-ES', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Clock className="size-4" />
-                      {session.startTime.substring(0, 5)} - {session.endTime.substring(0, 5)}
-                    </div>
-                    <span className="text-sm group-hover:underline flex flex-row items-center gap-1 pt-2">
-                      Ver detalles
-                      <CircleArrowRight className="size-4" />
-                    </span>
-                  </CardContent>
-                </Card>
-              </Link>
+                id={session.sessionId.toString()}
+                courseId={params.courseId}
+                number={session.sessionNumber}
+                date={session.date}
+                startTime={session.startTime}
+                endTime={session.endTime}
+                topic={session.topic}
+                attended={session.attendanceStats.presente}
+                absent={session.attendanceStats.ausente}
+                late={session.attendanceStats.tarde}
+              />
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-12 text-center">
-            <p className="text-muted-foreground">No hay sesiones registradas para este curso</p>
+          <div className="space-y-3">
+            {sessions.map((session) => (
+              <SessionListItem
+                key={session.sessionId}
+                id={session.sessionId.toString()}
+                courseId={params.courseId}
+                number={session.sessionNumber}
+                date={session.date}
+                startTime={session.startTime}
+                endTime={session.endTime}
+                topic={session.topic}
+                attended={session.attendanceStats.presente}
+                absent={session.attendanceStats.ausente}
+                late={session.attendanceStats.tarde}
+              />
+            ))}
           </div>
-        )}
-      </div>
+        )
+      ) : (
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <p className="text-muted-foreground">No hay sesiones registradas para este curso</p>
+        </div>
+      )}
     </>
   )
 }

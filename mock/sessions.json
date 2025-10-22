@@ -3,45 +3,80 @@
     "sessionId": 1,
     "courseId": 1,
     "sectionId": 1,
+    "sessionNumber": 1,
     "date": "2025-10-14",
     "startTime": "08:00:00",
     "endTime": "10:00:00",
-    "topic": "Introducción a Android Studio"
+    "topic": "Introducción a Android Studio",
+    "attendanceStats": {
+      "presente": 3,
+      "ausente": 1,
+      "tarde": 1,
+      "justificado": 1
+    }
   },
   {
     "sessionId": 2,
     "courseId": 1,
     "sectionId": 1,
+    "sessionNumber": 2,
     "date": "2025-10-21",
     "startTime": "08:00:00",
     "endTime": "10:00:00",
-    "topic": "Componentes de UI en Android"
+    "topic": "Componentes de UI en Android",
+    "attendanceStats": {
+      "presente": 5,
+      "ausente": 0,
+      "tarde": 1,
+      "justificado": 0
+    }
   },
   {
     "sessionId": 3,
     "courseId": 1,
     "sectionId": 1,
+    "sessionNumber": 3,
     "date": "2025-10-28",
     "startTime": "08:00:00",
     "endTime": "10:00:00",
-    "topic": "Actividades e Intents"
+    "topic": "Actividades e Intents",
+    "attendanceStats": {
+      "presente": 0,
+      "ausente": 0,
+      "tarde": 0,
+      "justificado": 0
+    }
   },
   {
     "sessionId": 4,
     "courseId": 1,
     "sectionId": 2,
+    "sessionNumber": 4,
     "date": "2025-10-15",
     "startTime": "10:00:00",
     "endTime": "12:00:00",
-    "topic": "Layouts y ViewGroups"
+    "topic": "Layouts y ViewGroups",
+    "attendanceStats": {
+      "presente": 4,
+      "ausente": 1,
+      "tarde": 0,
+      "justificado": 1
+    }
   },
   {
     "sessionId": 5,
     "courseId": 1,
     "sectionId": 2,
+    "sessionNumber": 5,
     "date": "2025-10-22",
     "startTime": "10:00:00",
     "endTime": "12:00:00",
-    "topic": "RecyclerView y Adaptadores"
+    "topic": "RecyclerView y Adaptadores",
+    "attendanceStats": {
+      "presente": 2,
+      "ausente": 2,
+      "tarde": 1,
+      "justificado": 1
+    }
   }
 ]

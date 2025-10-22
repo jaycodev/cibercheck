@@ -1,10 +1,9 @@
 'use client'
 
-import { BookOpen, CircleArrowRight } from 'lucide-react'
+import { BookOpen } from 'lucide-react'
 import Link from 'next/link'
 
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 
 interface CourseCardProps {
   id: string
@@ -12,38 +11,36 @@ interface CourseCardProps {
   sectionId: number
   code: string
   name: string
-  status: 'Abierto' | 'Cerrado'
+  section: string
   color: string
 }
 
-export function CourseCard({ id, code, name, status, color }: CourseCardProps) {
+export function CourseCard({ id, code, name, section, color }: CourseCardProps) {
   return (
     <Link href={`/curso/${id}`}>
-      <Card className="group overflow-hidden transform transition-transform duration-200 ease-in-out hover:shadow-lg hover:-translate-y-1">
-        <CardHeader className="p-6 text-white" style={{ backgroundColor: color }}>
-          <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-white/20 backdrop-blur-sm">
-              <BookOpen className="size-6" />
+      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer">
+        <div className="flex h-full">
+          <div className="w-1 transition-all group-hover:w-2" style={{ backgroundColor: color }} />
+          <CardContent className="flex-1 p-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-start justify-between mb-3">
+                <div
+                  className="flex h-10 w-10 items-center justify-center rounded-lg transition-colors"
+                  style={{ backgroundColor: `${color}20` }}
+                >
+                  <BookOpen className="h-5 w-5" style={{ color }} />
+                </div>
+              </div>
+              <p className="text-xs font-mono font-semibold mb-2" style={{ color }}>
+                {code}
+              </p>
+              <h3 className="font-semibold text-sm leading-tight text-balance mb-2 uppercase">
+                {name}
+              </h3>
             </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-lg leading-tight text-balance">{name}</h3>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent className="p-6 space-y-3">
-          <div>
-            <p className="text-sm font-mono text-muted-foreground">{code}</p>
-          </div>
-          <div className="flex items-center justify-between">
-            <Badge variant={status === 'Abierto' ? 'default' : 'secondary'} className="font-medium">
-              {status}
-            </Badge>
-            <span className="text-sm group-hover:underline flex flex-row items-center gap-1">
-              Ver detalles
-              <CircleArrowRight className="size-4" />
-            </span>
-          </div>
-        </CardContent>
+            <p className="text-xs text-muted-foreground">{section}</p>
+          </CardContent>
+        </div>
       </Card>
     </Link>
   )

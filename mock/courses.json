@@ -3,84 +3,108 @@
     "courseId": 1,
     "name": "Desarrollo de Aplicaciones Móviles I",
     "code": "DAM-I",
+    "slug": "desarrollo-de-aplicaciones-moviles-i",
     "sectionId": 1,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 1,
     "name": "Desarrollo de Aplicaciones Móviles I",
     "code": "DAM-I",
+    "slug": "desarrollo-de-aplicaciones-moviles-i",
     "sectionId": 2,
-    "section": "Sección B"
+    "section": "Sección B",
+    "sectionSlug": "seccion-b"
   },
   {
     "courseId": 2,
     "name": "Innovación y Emprendimiento",
     "code": "INE",
+    "slug": "innovacion-y-emprendimiento",
     "sectionId": 3,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 3,
     "name": "Inglés II",
     "code": "ING-II",
+    "slug": "ingles-ii",
     "sectionId": 4,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 3,
     "name": "Inglés II",
     "code": "ING-II",
+    "slug": "ingles-ii",
     "sectionId": 5,
-    "section": "Sección B"
+    "section": "Sección B",
+    "sectionSlug": "seccion-b"
   },
   {
     "courseId": 4,
     "name": "Lenguaje de Programación II",
     "code": "LP-II",
+    "slug": "lenguaje-de-programacion-ii",
     "sectionId": 6,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 5,
     "name": "Programación Web",
     "code": "PW",
+    "slug": "programacion-web",
     "sectionId": 7,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 5,
     "name": "Programación Web",
     "code": "PW",
+    "slug": "programacion-web",
     "sectionId": 8,
-    "section": "Sección B"
+    "section": "Sección B",
+    "sectionSlug": "seccion-b"
   },
   {
     "courseId": 6,
     "name": "Base de Datos I",
     "code": "BD-I",
+    "slug": "base-de-datos-i",
     "sectionId": 9,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 7,
     "name": "Base de Datos Avanzado I",
     "code": "BDA-I",
-    "sectionId": 10,
-    "section": "Sección A"
+    "slug": "base-de-datos-avanzado-i",
+    "sectionId": 11,
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 8,
     "name": "Matemática para la Computación",
     "code": "MC",
+    "slug": "matematica-para-la-computacion",
     "sectionId": 11,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   },
   {
     "courseId": 9,
     "name": "Arquitectura de Software",
     "code": "AS",
+    "slug": "arquitectura-de-software",
     "sectionId": 12,
-    "section": "Sección A"
+    "section": "Sección A",
+    "sectionSlug": "seccion-a"
   }
 ]

@@ -24,8 +24,8 @@ const groupedCourses = coursesData.map((course) => ({
   courseId: course.courseId,
   sectionId: course.sectionId,
   code: course.code,
-  name: `${course.name} - ${course.section}`,
-  status: 'Abierto' as const,
+  name: course.name,
+  section: course.section,
   color: getCourseColor(course.courseId),
 }))
 
