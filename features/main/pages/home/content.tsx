@@ -38,7 +38,7 @@ interface CourseCardProps {
 function CourseCard({ courseSlug, code, name, totalSections, color }: CourseCardProps) {
   return (
     <Link href={`/curso/${courseSlug}`}>
-      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer h-full py-0">
+      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 cursor-pointer h-full py-0">
         <div className="flex h-full">
           <div className="w-1 transition-all group-hover:w-2" style={{ backgroundColor: color }} />
           <CardContent className="flex-1 p-6 flex flex-col justify-between">
@@ -54,7 +54,7 @@ function CourseCard({ courseSlug, code, name, totalSections, color }: CourseCard
               <p className="text-xs font-mono font-semibold mb-2" style={{ color }}>
                 {code}
               </p>
-              <h3 className="font-semibold text-sm leading-tight text-balance mb-2 uppercase">
+              <h3 className="font-semibold text-lg leading-tight text-balance mb-2 uppercase">
                 {name}
               </h3>
             </div>
