@@ -31,7 +31,7 @@ function SectionCard({
 
   return (
     <Link href={`/curso/${courseSlug}/${sectionSlug}`}>
-      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer h-full">
+      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer h-full py-0">
         <div className="flex h-full">
           <div className="w-1 transition-all group-hover:w-2" style={{ backgroundColor: color }} />
           <CardContent className="flex-1 p-6 flex flex-col justify-between">
@@ -99,7 +99,6 @@ export function CourseSectionsPage({ params }: { params: { courseSlug: string } 
   const { courseSlug } = params
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
 
-  // Buscar el curso por slug
   const course = coursesData.find((c) => c.courseSlug === courseSlug)
 
   if (!course) {

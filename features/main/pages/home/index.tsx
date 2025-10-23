@@ -2,11 +2,11 @@
 
 import { useState } from 'react'
 
-import { LayoutGrid, List, Search } from 'lucide-react'
+import { BookOpen, LayoutGrid, List, Search, Star } from 'lucide-react'
+import Link from 'next/link'
 
-import { CourseCard } from '@main/components/course-card'
-import { CourseListItem } from '@main/components/course-list-item'
-
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
 import {
   Select,
@@ -26,6 +26,85 @@ const groupedCourses = coursesData.map((course) => ({
   totalSections: course.totalSections,
   color: course.color,
 }))
+
+interface CourseCardProps {
+  courseSlug: string
+  code: string
+  name: string
+  totalSections: number
+  color: string
+}
+
+function CourseCard({ courseSlug, code, name, totalSections, color }: CourseCardProps) {
+  return (
+    <Link href={`/curso/${courseSlug}`}>
+      <Card className="group overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] cursor-pointer h-full py-0">
+        <div className="flex h-full">
+          <div className="w-1 transition-all group-hover:w-2" style={{ backgroundColor: color }} />
+          <CardContent className="flex-1 p-6 flex flex-col justify-between">
+            <div>
+              <div className="flex items-start justify-between mb-3">
+                <div
+                  className="flex size-10 items-center justify-center rounded-lg transition-colors"
+                  style={{ backgroundColor: `${color}20` }}
+                >
+                  <BookOpen className="size-5" style={{ color }} />
+                </div>
+              </div>
+              <p className="text-xs font-mono font-semibold mb-2" style={{ color }}>
+                {code}
+              </p>
+              <h3 className="font-semibold text-sm leading-tight text-balance mb-2 uppercase">
+                {name}
+              </h3>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {totalSections} {totalSections === 1 ? 'sección' : 'secciones'}
+            </p>
+          </CardContent>
+        </div>
+      </Card>
+    </Link>
+  )
+}
+
+interface CourseListItemProps {
+  courseSlug: string
+  code: string
+  name: string
+  totalSections: number
+  color: string
+}
+
+function CourseListItem({ courseSlug, code, name, totalSections, color }: CourseListItemProps) {
+  return (
+    <Link href={`/curso/${courseSlug}`}>
+      <div className="group flex items-center gap-4 rounded-lg border bg-card p-4 mb-3 transition-all hover:shadow-md">
+        <div
+          className="h-16 w-1 rounded-full transition-all group-hover:w-2"
+          style={{ backgroundColor: color }}
+        />
+
+        <div className="flex-1 space-y-1">
+          <p className="text-sm font-mono text-muted-foreground">{code}</p>
+          <h3 className="font-semibold text-lg leading-tight text-balance uppercase">{name}</h3>
+          <p className="text-sm text-muted-foreground">
+            {totalSections} {totalSections === 1 ? 'sección' : 'secciones'}
+          </p>
+        </div>
+
+        <Button
+          variant="ghost"
+          size="icon"
+          className="shrink-0"
+          onClick={(e) => e.preventDefault()}
+        >
+          <Star className="size-4 text-muted-foreground" />
+        </Button>
+      </div>
+    </Link>
+  )
+}
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
