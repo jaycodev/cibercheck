@@ -3,11 +3,11 @@
 import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
-import { AttendanceTable } from '@main/components/attendance-table'
-
 import { Button } from '@/components/ui/button'
 import courseSectionDetail from '@/mock/attendance.json'
 import sessionsData from '@/mock/sessions.json'
+
+import { AttendanceTable } from './attendance-table'
 
 const generateStudents = (count: number, seed: string) => {
   const firstNames = [
@@ -65,7 +65,7 @@ const generateStudents = (count: number, seed: string) => {
   return students
 }
 
-export default function SessionPage({
+export function SessionAttendancePage({
   params,
 }: {
   params: { courseSlug: string; sectionSlug: string; sessionNumber: string }
@@ -73,7 +73,6 @@ export default function SessionPage({
   const { courseSlug, sectionSlug, sessionNumber } = params
   const parsedSessionNumber = parseInt(sessionNumber)
 
-  // En producción, esto vendría de la API
   const course = courseSectionDetail
 
   const session = sessionsData.find(

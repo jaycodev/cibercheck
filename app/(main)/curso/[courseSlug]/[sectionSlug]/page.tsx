@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { CoursePage } from '@main/pages/course'
+import { SectionSessionsPage } from '@main/pages/section-sessions'
 
 import courseSectionDetail from '@/mock/attendance.json'
 
@@ -25,5 +25,5 @@ export default async function Page({
 }) {
   const { courseSlug, sectionSlug } = await params
 
-  return <CoursePage params={{ courseSlug, sectionSlug }} />
+  return <SectionSessionsPage params={{ courseSlug, sectionSlug }} />
 }

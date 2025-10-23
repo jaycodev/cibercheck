@@ -160,7 +160,11 @@ function SessionListItem({
   )
 }
 
-export function CoursePage({ params }: { params: { courseSlug: string; sectionSlug: string } }) {
+export function SectionSessionsPage({
+  params,
+}: {
+  params: { courseSlug: string; sectionSlug: string }
+}) {
   const { courseSlug, sectionSlug } = params
 
   const course = courseSectionDetail
