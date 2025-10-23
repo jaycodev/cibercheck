@@ -3,6 +3,10 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader'
 
+import { ViewModeScript } from '@main/components/view-mode-script'
+
+import { ThemeScript } from '@/components/shared/theme-script'
+
 import './globals.css'
 
 const inter = Inter({
@@ -36,26 +40,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            // Prevent theme flash on first load
-            const theme =
-            localStorage.getItem('theme') ||
-            (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-            document.documentElement.classList.add(theme);
-            
-            const meta = document.querySelector('meta[name="theme-color"]');
-            if (meta) {
-              meta.content = theme === 'dark' ? 'oklch(0.141 0.005 285.823)' : 'oklch(1 0 0)';
-              }
-              `,
-          }}
-        />
-      </head>
+    <html lang="es" suppressHydrationWarning>
+      <head />
       <body className={`${inter.className} antialiased`}>
+        <ViewModeScript />
+        <ThemeScript />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

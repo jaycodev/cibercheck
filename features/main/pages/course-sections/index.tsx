@@ -1,13 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-
-import { ArrowLeft, BookOpen, LayoutGrid, List } from 'lucide-react'
+import { ArrowLeft, BookOpen } from 'lucide-react'
 import Link from 'next/link'
+
+import { ViewModeTabs } from '@main/components/view-mode-tabs'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useViewMode } from '@/lib/use-view-mode'
 import coursesData from '@/mock/courses.json'
 import sectionsData from '@/mock/sections.json'
 
@@ -97,9 +97,13 @@ function SectionListItem({
 
 export function CourseSectionsPage({ params }: { params: { courseSlug: string } }) {
   const { courseSlug } = params
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-
   const course = coursesData.find((c) => c.courseSlug === courseSlug)
+
+  const [viewMode, , mounted] = useViewMode()
+
+  if (!mounted) {
+    return null
+  }
 
   if (!course) {
     return <p>Curso no encontrado</p>
@@ -128,21 +132,7 @@ export function CourseSectionsPage({ params }: { params: { courseSlug: string } 
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center mb-6">
         <h2 className="text-xl font-semibold">Secciones</h2>
-        <Tabs
-          value={viewMode}
-          onValueChange={(val) => setViewMode(val as 'grid' | 'list')}
-          defaultValue="grid"
-          className="ml-auto"
-        >
-          <TabsList>
-            <TabsTrigger value="grid">
-              <LayoutGrid />
-            </TabsTrigger>
-            <TabsTrigger value="list">
-              <List />
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <ViewModeTabs className="ml-auto" />
       </div>
 
       {sectionsData.length > 0 ? (

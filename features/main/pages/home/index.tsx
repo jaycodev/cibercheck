@@ -2,8 +2,10 @@
 
 import { useState } from 'react'
 
-import { BookOpen, LayoutGrid, List, Search, Star } from 'lucide-react'
+import { BookOpen, Search, Star } from 'lucide-react'
 import Link from 'next/link'
+
+import { ViewModeTabs } from '@main/components/view-mode-tabs'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -15,7 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useViewMode } from '@/lib/use-view-mode'
 import coursesData from '@/mock/courses.json'
 
 const groupedCourses = coursesData.map((course) => ({
@@ -108,7 +110,7 @@ function CourseListItem({ courseSlug, code, name, totalSections, color }: Course
 
 export function HomePage() {
   const [searchQuery, setSearchQuery] = useState('')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [viewMode, , mounted] = useViewMode()
   const [periodFilter, setPeriodFilter] = useState('all')
   const [courseFilter, setCourseFilter] = useState('all')
   const [itemsPerPage, setItemsPerPage] = useState('10')
@@ -118,6 +120,10 @@ export function HomePage() {
       course.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       course.code.toLowerCase().includes(searchQuery.toLowerCase())
   )
+
+  if (!mounted) {
+    return null
+  }
 
   return (
     <>
@@ -129,20 +135,7 @@ export function HomePage() {
 
         <div className="flex flex-wrap gap-4 items-start lg:flex-nowrap lg:items-center lg:justify-between">
           <div className="flex flex-wrap gap-3 items-center w-full lg:w-auto">
-            <Tabs
-              value={viewMode}
-              onValueChange={(val) => setViewMode(val as 'grid' | 'list')}
-              defaultValue="grid"
-            >
-              <TabsList>
-                <TabsTrigger value="grid">
-                  <LayoutGrid />
-                </TabsTrigger>
-                <TabsTrigger value="list">
-                  <List />
-                </TabsTrigger>
-              </TabsList>
-            </Tabs>
+            <ViewModeTabs />
 
             <InputGroup className="min-w-70 w-auto">
               <InputGroupInput

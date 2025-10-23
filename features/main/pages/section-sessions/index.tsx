@@ -1,22 +1,13 @@
 'use client'
 
-import { useState } from 'react'
-
-import {
-  AlertCircle,
-  ArrowLeft,
-  Calendar,
-  CheckCircle2,
-  Clock,
-  LayoutGrid,
-  List,
-  XCircle,
-} from 'lucide-react'
+import { AlertCircle, ArrowLeft, Calendar, CheckCircle2, Clock, XCircle } from 'lucide-react'
 import Link from 'next/link'
+
+import { ViewModeTabs } from '@main/components/view-mode-tabs'
 
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { useViewMode } from '@/lib/use-view-mode'
 import courseSectionDetail from '@/mock/attendance.json'
 import coursesData from '@/mock/courses.json'
 import sessionsData from '@/mock/sessions.json'
@@ -58,7 +49,7 @@ function SessionCard({
 }: SessionCardProps) {
   return (
     <Link href={`/curso/${courseSlug}/${sectionSlug}/sesion/${sessionNumber}`}>
-      <Card className="overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] h-full cursor-pointer py-0">
+      <Card className="overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02] h-full cursor-pointer">
         <CardHeader className="pb-3">
           <div className="space-y-2">
             <p className="text-sm font-semibold">Sesión {number}</p>
@@ -172,7 +163,11 @@ export function SectionSessionsPage({
     (s) => s.courseSlug === courseSlug && s.sectionSlug === sectionSlug
   )
 
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [viewMode, , mounted] = useViewMode()
+
+  if (!mounted) {
+    return null
+  }
 
   if (!course) {
     return <p>Curso no encontrado</p>
@@ -202,22 +197,8 @@ export function SectionSessionsPage({
       </div>
 
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center mb-6">
-        <h2 className="text-xl font-semibold">Sesiones de Clase</h2>
-        <Tabs
-          value={viewMode}
-          onValueChange={(val) => setViewMode(val as 'grid' | 'list')}
-          defaultValue="grid"
-          className="ml-auto"
-        >
-          <TabsList>
-            <TabsTrigger value="grid">
-              <LayoutGrid />
-            </TabsTrigger>
-            <TabsTrigger value="list">
-              <List />
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <h2 className="text-xl font-semibold">Sesiones de clase</h2>
+        <ViewModeTabs className="ml-auto" />
       </div>
 
       {sessions.length > 0 ? (
