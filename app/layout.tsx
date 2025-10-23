@@ -3,8 +3,6 @@ import { Inter } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader'
 
-import { ViewModeScript } from '@main/components/view-mode-script'
-
 import { ThemeScript } from '@/components/shared/theme-script'
 
 import './globals.css'
@@ -41,10 +39,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <head />
-      <body className={`${inter.className} antialiased`}>
-        <ViewModeScript />
+      <head>
         <ThemeScript />
+      </head>
+      <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
